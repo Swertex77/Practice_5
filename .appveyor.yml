@@ -1,0 +1,18 @@
+image: Ubuntu  # образ для сборки
+
+stack: jdk 11  # версия JDK
+
+branches:
+  only:
+    - main  # ветка git
+
+build: off  # будем использовать свой скрипт сборки
+
+before_build:
+  - mvn -v
+
+build_script:
+  - mvn clean package -DskipTests
+
+test_script:
+  - mvn install verify
